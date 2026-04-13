@@ -1,5 +1,4 @@
 import { imports } from '@shgysk8zer0/importmap';
-import { checkCacheItem, setCacheItem } from '@aegisjsproject/http-utils/cache.js';
 import { addTrustedTypePolicy, addScriptSrc, useDefaultCSP } from '@aegisjsproject/http-utils/csp.js';
 
 addScriptSrc(
@@ -13,11 +12,23 @@ export default {
 	routes: {
 		'/': '@aegisjsproject/dev-server',
 		'/favicon.svg': '@aegisjsproject/dev-server/favicon',
+		'/index.js': () => new Response(`
+			import { registerKey, getFromRegistry, hasRegistryKey, listRegistryKeys, Registry } from '@aegisjsproject/disposable-registry';
+
+			const stack = new DisposableStack();
+			const reg = new Registry({ stack });
+			registerKey('uuid', crypto.randomUUID(), reg);
+
+			globalThis.stack = stack;
+			globalThis.registerKey = (key, val) => registerKey(key, val, reg);
+			globalThis.getFromRegistry = key => getFromRegistry(key, reg);
+			globalThis.hasRegistryKey = key => hasRegistryKey(key, reg);
+			globalThis.listRegistryKeys = () => listRegistryKeys(reg);
+		`, { headers: { 'Content-Type': 'application/javascript' }}),
 	},
 	open: true,
 	requestPreprocessors: [
 		'@aegisjsproject/http-utils/request-id.js',
-		checkCacheItem,
 	],
 	responsePostprocessors: [
 		'@aegisjsproject/http-utils/compression.js',
@@ -28,6 +39,5 @@ export default {
 				response.headers.append('Link', `<${imports['@shgysk8zer0/polyfills']}>; rel="preload"; as="script"; fetchpriority="high"; crossorigin="anonymous"; referrerpolicy="no-referrer"`);
 			}
 		},
-		setCacheItem,
 	],
 };
