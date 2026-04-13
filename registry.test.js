@@ -18,13 +18,13 @@ describe('Disposable Registry', () => {
 
 	it('registry tests', () => {
 		const stack = new DisposableStack();
-		const reg = new Registry({ stack });
+		const reg = new Registry([['foo', 'bar']], { stack });
 		const controller = new DisposableAbortController();
 		const key = registerKey('controller', controller, reg);
 
 		assert.strictEqual(getFromRegistry(key, reg), controller, 'Retrieving from registry should return initial values.');
 		assert.ok(hasRegistryKey(key, reg), 'Keys should be properly registered.');
-		assert.deepStrictEqual(listRegistryKeys(reg), ['controller'], 'Listing keys of registry should return expected array of keys.');
+		assert.deepStrictEqual(listRegistryKeys(reg), ['foo', 'controller'], 'Listing keys of registry should return expected array of keys.');
 		stack.dispose();
 		assert.strictEqual(getFromRegistry(key, reg), null, 'Retrieving from disposed registry should return null.');
 		assert.ok(! hasRegistryKey(key, reg), 'Disposal should remove keys from registry');

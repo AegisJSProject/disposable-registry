@@ -58,13 +58,13 @@ export class Registry extends Map {
 		controller => controller.abort(new DOMException('Stack disposed', 'AbortError'))
 	);
 
-	constructor({ signal, stack } = {}) {
+	constructor(iterable, { signal, stack } = {}) {
 		if (signal instanceof AbortSignal && signal.aborted) {
 			throw signal.reason;
 		} else if ((stack instanceof DisposableStack || stack instanceof AsyncDisposableStack) && stack.disposed) {
 			throw new TypeError('Cannot create a registry using an already disposed stack.');
 		} else {
-			super();
+			super(iterable);
 
 			if (stack instanceof DisposableStack || stack instanceof AsyncDisposableStack) {
 				stack.use(this);
