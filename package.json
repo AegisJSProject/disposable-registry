@@ -1,16 +1,20 @@
 {
-  "name": "npm-template",
-  "version": "1.1.3",
-  "description": "A template repo for npm packages",
-  "keywords": [],
+  "name": "@aegisjsproject/disposable-registry",
+  "version": "1.0.0",
+  "description": "A generic library for registering things with opt-in clean-up",
+  "keywords": [
+    "registry",
+    "disposable",
+    "resource-management"
+  ],
   "type": "module",
-  "main": "./index.cjs",
-  "module": "./index.js",
-  "unpkg": "./index.min.js",
+  "main": "./registry.cjs",
+  "module": "./registry.js",
+  "unpkg": "./registry.min.js",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "require": "./index.cjs"
+      "import": "./registry.js",
+      "require": "./registry.cjs"
     },
     "./*.js": {
       "import": "./*.js",
@@ -52,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shgysk8zer0/npm-template.git"
+    "url": "git+https://github.com/AegisJSProject/disposable-registry.git"
   },
   "author": "Chris Zuber <admin@kernvalley.us>",
   "license": "MIT",
@@ -67,16 +71,16 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/shgysk8zer0/npm-template/issues"
+    "url": "https://github.com/AegisJSProject/disposable-registry/issues"
   },
-  "homepage": "https://github.com/shgysk8zer0/npm-template#readme",
+  "homepage": "https://github.com/AegisJSProject/disposable-registry#readme",
   "devDependencies": {
     "@aegisjsproject/dev-server": "^1.0.6",
     "@aegisjsproject/http-utils": "^1.0.4",
     "@rollup/plugin-terser": "^1.0.0",
     "@shgysk8zer0/eslint-config": "^1.0.9",
     "@shgysk8zer0/http-server": "^1.1.2",
-    "@shgysk8zer0/importmap": "^1.8.13",
+    "@shgysk8zer0/importmap": "^1.8.15",
     "eslint": "^10.2.0",
     "rollup": "^4.60.1"
   }

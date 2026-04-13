@@ -1,23 +1,14 @@
 import terser from '@rollup/plugin-terser';
 
 export default [{
-	input: 'index.js',
+	input: 'registry.js',
 	output: [{
-		file: 'index.cjs',
+		file: 'registry.cjs',
 		format: 'cjs',
 	}, {
-		file: 'index.min.js',
-		format: 'iife',
+		file: 'registry.min.js',
+		format: 'esm',
 		plugins: [terser()],
 		sourcemap: true,
-	}, {
-		file: 'index.mjs',
-		format: 'module',
 	}],
-}, {
-	input: 'consts.js',
-	output: {
-		file: 'consts.cjs',
-		format: 'cjs',
-	}
 }];
