@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/disposable-registry",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A generic library for registering things with opt-in clean-up",
   "keywords": [
     "registry",
