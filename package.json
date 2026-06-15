@@ -1,6 +1,6 @@
 {
   "name": "@aegisjsproject/disposable-registry",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A generic library for registering things with opt-in clean-up",
   "keywords": [
     "registry",
@@ -75,13 +75,16 @@
   },
   "homepage": "https://github.com/AegisJSProject/disposable-registry#readme",
   "devDependencies": {
-    "@aegisjsproject/dev-server": "^1.0.6",
-    "@aegisjsproject/http-utils": "^1.0.4",
+    "@aegisjsproject/dev-server": "^1.1.0",
+    "@aegisjsproject/http-utils": "^1.1.0",
     "@rollup/plugin-terser": "^1.0.0",
     "@shgysk8zer0/eslint-config": "^1.0.9",
-    "@shgysk8zer0/http-server": "^1.1.2",
-    "@shgysk8zer0/importmap": "^1.8.15",
-    "eslint": "^10.2.0",
-    "rollup": "^4.60.1"
+    "@shgysk8zer0/http-server": "^1.2.0",
+    "@shgysk8zer0/importmap": "^1.10.1",
+    "eslint": "^10.5.0",
+    "rollup": "^4.62.0"
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
   }
 }
