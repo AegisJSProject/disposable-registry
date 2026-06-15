@@ -26,4 +26,4 @@ A generic library for registering things with opt-in clean-up.
 
 - [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
 - [Contributing](./.github/CONTRIBUTING.md)
-<!-- - [Security Policy](./.github/SECURITY.md) -->
+- [Security Policy](./.github/SECURITY.md)
